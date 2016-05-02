@@ -130,7 +130,7 @@ module.exports = class BotPlayer extends PlayerTracker {
 
             continue;
           }
-          var random = Math.floor(Math.random()*100);
+          var random = Math.floor(Math.random()*500);
           if (check.owner && random < 5 && Math.abs(check.owner.getScore() - this.getScore()) < 200 && this.team == 0) {
             this.team = 1;
           this.teamingwith = check.owner;
