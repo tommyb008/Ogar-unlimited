@@ -4,7 +4,7 @@ const request = require('request');
 // plugin command
 module.exports = function (gameServer, split) {
   if (split[1] == "list") {
-    console.log("[Console] --------------- Available Plugins ---------------");
+    console.log("[Console] --------------- Installed Plugins ---------------");
     for (var i in gameServer.plugins) {
       var plugin = gameServer.plugins[i];
       if (plugin && plugin.name && plugin.author && plugin.version) {
@@ -33,6 +33,73 @@ module.exports = function (gameServer, split) {
       console.log("[Console] Please specify a plugin filename")
       
     }
+  } else if (split[1] == "install") {
+    if (!split[2]) {
+      console.log("[Console] Please specify a plugin name. Do plugin available to see available plugins");
+      return;
+    }
+    request('https://raw.githubusercontent.com/AJS-development/OgarUL-Plugin-Library/master/files.txt', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+        var ava = body.split(/[\r\n]+/).filter(function (x) {
+            return x != ''; // filter empty
+          });
+var ok = false;
+          for (var i in ava) {
+            var s = ava[i].split("|");
+            if (split[2] == s[0]) {
+            var newsplit = [];
+            newsplit[1] = 'add'
+            newsplit[2] = s[2]
+            newsplit[3] = s[0]
+    gameServer.consoleService.execCommand('plugin', newsplit);
+            console.log("[Console] Installing " + s[0]);
+           ok = true
+            break;
+            }
+          }
+        if (!ok) {
+          console.log("[Console] That plugin does not exist. Do plugin available to see available plugins");
+      return;
+        }
+          
+          
+        } else {
+          console.log("[Console] Failed to connect to servers")
+          return;
+        }
+    });
+    
+    
+  } else if (split[1] == "available") {
+  console.log("[Console] Connecting to servers...");
+   request('https://raw.githubusercontent.com/AJS-development/OgarUL-Plugin-Library/master/files.txt', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+           var ava = body.split(/[\r\n]+/).filter(function (x) {
+            return x != ''; // filter empty
+          });
+          var names = [];
+          var url = [];
+          var desc = [];
+          for (var i in ava) {
+            var s = ava[i].split("|");
+            names[i] = s[0];
+            desc[i] = s[1];
+            url[i] = s[2];
+          }
+             console.log("[Console] --------------- Available Plugins ---------------");
+          for (var i in names) {
+            console.log(names[i] + "\n    Description: "+ desc[i]);
+            
+          }
+          
+          console.log("[Console] ------------------------------------------------");
+          
+        } else {
+          console.log("[Console] Failed to connect to servers");
+          return;
+        }
+   });
+  
   } else if (split[1] == "add") {
     if (!split[3]) {
       
@@ -109,7 +176,7 @@ gameServer.pluginLoader.load();
     
     
   } else {
-    console.log("[Console] Please specify a command. Available commands: list, reload, delete, add")
+    console.log("[Console] Please specify a command. Available commands: list, reload, delete, add, available, install")
   }
 
 

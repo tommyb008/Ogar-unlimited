@@ -204,6 +204,7 @@ module.exports = class GameServer {
 
   start() {
 
+
     // Logging
     this.log.setup(this);
 
@@ -225,7 +226,9 @@ module.exports = class GameServer {
       //setInterval(this.mainLoop.bind(this), 1);
       setImmediate(this.mainLoopBind);
 
-      console.log("[Game] Listening on port " + this.config.serverPort);
+      var serverPort = (this.config.vps == 1) ? process.env.PORT : this.config.serverPort;
+      
+      console.log("[Game] Listening on port " + serverPort);
       console.log("[Game] Current game mode is " + this.gameMode.name);
       Cell.spi = this.config.SpikedCells;
       Cell.virusi = this.config.viruscolorintense;
@@ -248,6 +251,7 @@ module.exports = class GameServer {
         this.consoleService.execCommand("restart", split);
 
       }
+      if (this.config.vps == 1) console.log("\x1b[31m[IMPORTANT] You are using a VPS provider. Stats server and port choosing is disabled.\x1b[0m")
       let game = this; // <-- todo what is this?
     }.bind(this));
 

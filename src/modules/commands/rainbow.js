@@ -10,14 +10,14 @@ module.exports = function (gameServer, split) {
       if (client.rainbowon) {
         client.rainbowon = false;
         for (var j in client.cells) {
-          gameServer.rainbowNodes[client.cells[j].nodeId] = [];
+          gameServer._rainbowNodes[client.cells[j].nodeId] = [];
           client.cells[j].color = client.color;
         }
         console.log("[Console] Removed rainbow effect for " + client.name);
       } else {
         client.rainbowon = true;
         for (var j in client.cells) {
-          gameServer.rainbowNodes[client.cells[j].nodeId] = client.cells[j];
+          gameServer._rainbowNodes[client.cells[j].nodeId] = client.cells[j];
         }
         console.log("[Console] Added rainbow effect for " + client.name);
       }

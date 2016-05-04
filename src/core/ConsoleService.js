@@ -162,8 +162,7 @@ module.exports = class ConsoleService {
    
     this.gameServer.liveticks++;
   }
-
-  execCommand(command, args) {
+  execCommand(command, split) {
     try {
       var execute = this.commands[command];
       if (typeof execute !== 'undefined') {
@@ -174,16 +173,20 @@ module.exports = class ConsoleService {
         execute(this.gameServer, split);
 
       } else {
-        console.warn('[ConsoleService] Failed to run command: ' + command + " args: " + args);
+        console.warn('[ConsoleService] Failed to run command: ' + command + " args: " + split);
       }
     }
-      execute(this, args);
     } catch (e) {
       console.warn('[ConsoleService] Failed to run command: ' + command + " args: " + args);
     }
 
   };
-
+execcommand(command, args) {
+ return this.execCommand(command, args); 
+}
+execommand(command, args) {
+ return this.execCommand(command, args); 
+}
   setGameServer(gameServer) {
     this.gameServer = gameServer;
   }
