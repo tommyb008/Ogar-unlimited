@@ -385,7 +385,8 @@ if (this.gameServer.config.highscore == 1) {
       updateNodes,
       nonVisibleNodes,
       this.scrambleX,
-      this.scrambleY
+      this.scrambleY,
+      this.gameServer
     ));
 
     this.nodeDestroyQueue = []; // Reset destroy queue

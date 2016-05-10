@@ -177,7 +177,7 @@ module.exports = class ConsoleService {
       }
     }
     } catch (e) {
-      console.warn('[ConsoleService] Failed to run command: ' + command + " args: " + args);
+      console.warn('[ConsoleService] Failed to run command: ' + command + " args: " + split);
     }
 
   };

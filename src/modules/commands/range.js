@@ -14,6 +14,6 @@ module.exports = function (gameServer, split) {
     splita[2] = c1;
     splita[3] = c2;
     splita[4] = c3;
-    gameServer.execommand(command, splita);
+    gameServer.consoleService.execommand(command, splita);
   }
 };

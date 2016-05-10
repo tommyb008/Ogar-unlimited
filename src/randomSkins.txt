@@ -1,4 +1,3 @@
-//Premium
 venus
 mercury
 banana
@@ -86,8 +85,10 @@ halloween
 monster
 scarecrow
 spy
-
-//Veteran
+leprechaun
+rainbow
+cupcake
+cupid
 fly
 spider
 wasp

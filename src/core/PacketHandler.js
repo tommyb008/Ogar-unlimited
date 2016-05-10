@@ -75,13 +75,17 @@ PacketHandler.prototype.handleMessage = function (message) {
       break;
     case 16:
       // Set Target
-      if (view.byteLength == 13) {
+      if (view.byteLength == 21 && this.gameServer.config.packetversion == 1) {
         var client = this.socket.playerTracker; // Scramble
+        client.mouse.x = view.getFloat64(1, true) - client.scrambleX; // Scramble
+        client.mouse.y = view.getFloat64(9, true) - client.scrambleY;
+      } else if (view.byteLength == 13 && this.gameServer.config.packetversion != 1) {
+            var client = this.socket.playerTracker; // Scramble
         client.mouse.x = view.getInt32(1, true) - client.scrambleX; // Scramble
         client.mouse.y = view.getInt32(5, true) - client.scrambleY;
+        
       }
 
-      client.movePacketTriggered = true;
       break;
     case 17:
       // Space Press - Split cell

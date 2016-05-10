@@ -149,8 +149,10 @@ MotherCell.prototype.checkEat = function (gameServer) {
   var r = this.getSize(); // The box area that the checked cell needs to be in to be considered eaten
 
   let nodes = gameServer.getWorld().getNodes();
+  
   for (var i in nodes) {
     var check = nodes[i];
+    if (typeof check != 'object') continue;
     // Calculations
     var len = r - (check.getSize() / 2) >> 0;
     if ((this.abs(this.position.x - check.position.x) < len) && (this.abs(this.position.y - check.position.y) < len)) {

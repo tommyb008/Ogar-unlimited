@@ -13,6 +13,7 @@ module.exports = class ConfigService {
       randomEjectMassColor: 0, // 0 = off 1 = on
       ffaTimeLimit: 60, // TFFA time
       ffaMaxLB: 10, // Max leaderboard slots
+      packetversion: 1,
       showtopscore: 0, // Shows top score (1 to enable)
       anounceDelay: 70, // Announce delay
       anounceDuration: 8, // How long the announce lasts

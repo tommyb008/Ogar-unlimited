@@ -67,13 +67,26 @@ BotLoader.prototype.loadNames = function () {
   this.nameIndex = 0;
 };
 
-BotLoader.prototype.addBot = function () {
+BotLoader.prototype.addBot = function (arg) {
   let s = new FakeSocket(this.gameServer);
   s.playerTracker = new BotPlayer(this.gameServer, s);
   s.packetHandler = new PacketHandler(this.gameServer, s);
   // Add to client list
+  for (var i in this.gameServer.plugins) {
+    var plugin = this.gameServer.plugins[i];
+        if (plugin.onaddbot && plugin.name && plugin.author && plugin.version) {
+          try {
+          plugin.onaddbot(this.gameServer, s, arg, this);
+          } catch (e) {
+            
+            throw e;
+          }
+        }
+  }
   this.gameServer.addClient(s);
 
   // Add to world
   s.packetHandler.setNickname(this.getName());
+  
+  
 };

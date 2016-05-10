@@ -31,7 +31,7 @@ angry :http://i2.kym-cdn.com/photos/images/facebook/000/232/114/e39.png
 megusta :http://i2.kym-cdn.com/photos/images/original/000/103/740/c2c.png
 pug :http://i.imgur.com/ehBCizT.jpg
 microsoft :http://i.imgur.com/8TfAIsb.png
-apple :http://i.imgur.com/Vp9wAQ4.png
+applecompany :http://i.imgur.com/Vp9wAQ4.png
 lg :http://i.imgur.com/Y3axyBD.png
 samsung :http://i.imgur.com/MUpcSzg.png
 snapchat :http://i.imgur.com/Ak83JmX.png
