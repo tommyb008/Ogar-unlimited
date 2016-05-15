@@ -5,7 +5,7 @@
 4. made graphics awful
 5. ruined the game
 6. Turned agario into a cash cow
-7. Ignored the community
+7. Ignored complains from the community
 8. Acted in their own behalf
 9. Obliterated extensions
 10. LAG
